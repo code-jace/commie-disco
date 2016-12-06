@@ -2,6 +2,7 @@ var Video = require('../models/videos');
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var ytsearch = require('youtube-search');
 
 mongoose.connect('mongodb://localhost:27017/videosdb');
 
@@ -35,24 +36,43 @@ router.findOne = function(req, res) {
     });
 }
 
+var opts = {
+    maxResults: 1,
+    key: 'AIzaSyD8nsJnEoR-AFZR5RhsAphrmmSH8o9Y-Ek'
+};
+
 router.addVideo = function(req, res) {
 
     var video = new Video();
-    video.id = req.body.id;
-    video.vidId = req.body.vidId;
-    video.vidName = req.body.vidName;
-    video.user = req.body.user;
-    video.veto = 0;
 
-    console.log('Adding Video: ' + JSON.stringify(video));
+    var checkId = '';
 
-    // Save the video and check for errors
-    video.save(function (err) {
-        if (err)
-            res.send(err);
 
-        res.json({message: 'Video Added!', data: video});
+    ytsearch(req.body.vidName, opts, function(err, results) {
+        if(err) return console.log(err);
+        else
+        //console.dir(results[0]);
+        console.warn(results[0].id);
+        video.vidId = (results[0].id);
+        video.vidName = req.body.vidName;
+        video.user = req.body.user;
+        video.veto = 0;
+
+        console.log('Adding Video: ' + JSON.stringify(video));
+
+        // Save the video and check for errors
+        video.save(function (err) {
+            if (err)
+                res.send(err);
+
+            res.json({message: 'Video Added!', data: video});
+        });
+
     });
+
+
+    //  video.vidId = checkId;
+
 
 }
 
@@ -120,6 +140,9 @@ router.resetVeto = function(req, res) {
     })
 
 }
+
+
+
 
 
 module.exports = router;

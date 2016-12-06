@@ -1,6 +1,6 @@
 var app = angular.module('Commie-Disco');
 
-//added the service to hold the ID
+/*Services for edit by help of classmate Thomas Tubbrit*/
 app.service('videoID', function(){
 
 var videoid = 0;
@@ -80,7 +80,7 @@ app.controller('videoController', ['$scope', '$location', '$http', 'videoID', fu
     }
 
     $scope.addVideo = function(){
-        countVideos();
+        //countVideos();
         $scope.formData.id = videoCount +1;
         $http.post('/videos', $scope.formData)
             .success(function(data) {
@@ -141,6 +141,7 @@ app.controller('videoController', ['$scope', '$location', '$http', 'videoID', fu
                 console.log('Error: ' + data);
             });
     };
+
 
 
 

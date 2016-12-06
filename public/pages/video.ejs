@@ -19,15 +19,20 @@
           class="form-control"
           placeholder="Video Name"
           ng-model="formData.vidName"
-          ng-style="{'width': auto}"></input>
+          ng-style="{'width': auto}"
+          required></input>
         </div>
-        <div class="form-group" align="center">
+        <div>
+          <p>A Video Id will be generated from the top result for your entry</p>
+          <p>By being more specific, you will have a better chance at getting what you want</p>
+        </div>
+        <!--<div class="form-group" align="center">
           <input type="text"
                  class="form-control"
                  placeholder="Video id"
                  ng-model="formData.vidId"
                  ng-style="{'width': auto}"></input>
-        </div>
+        </div> -->
         <div class="form-group" align="center">
           <input type="text"
                  class="form-control"
@@ -35,6 +40,7 @@
                  ng-model="formData.user"
                  ng-style="{'width':auto}"></input>
         </div>
+
         <button type="submit" class="btn btn-primary">ADD VIDEO!</button>
       </form>
 
