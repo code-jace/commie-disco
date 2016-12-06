@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="bin/www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="$PROJECT_DIR$/../commie-disco/bin/www" working-dir="$PROJECT_DIR$/../commie-disco">
+    <envs>
+      <env name="DEBUG" value="donationweb-1.0:*" />
+    </envs>
+    <browser start="true" url="http://localhost:8008/" />
+    <profiling v8-profiler-path="" />
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
+      <profiling v8-profiler-path="" />
+    </EXTENSION>
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+      <browser start="true" url="http://localhost:8008/" />
+    </EXTENSION>
+    <method />
+  </configuration>
+</component>

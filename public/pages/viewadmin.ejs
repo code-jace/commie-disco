@@ -1,0 +1,56 @@
+<div class="jumbotron text-center">
+	<h1>Administrator Mode</h1>
+
+    <a href="#view" class="btn btn-default" role="button">Normal Mode</a>
+
+	<p>All added videos</p>
+
+
+</div>
+
+  <div ng-controller="videoController as list">
+	<table align="center" valign="middle">
+        <tr>
+            <th><span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>ID</span></th>
+            <th><span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Title</span></th>
+            <th><span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>VideoID</span></th>
+            <th><span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>User<span style=margin-left:5px;" class="glyphicon glyphicon-user"></span></span></th>
+            <th><span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Veto</span></th>
+        </tr>
+	  <tbody ng-repeat="video in videos | orderBy:'video.id'">
+
+        <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
+            <td>
+                <span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{video.id}}</span>
+            </td>
+            <td>
+                <span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{video.vidName}}</span>
+            </td>
+            <td>
+                <span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{video.vidId}}</span>
+            </td>
+            <td>
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{video.user}}</span>
+            </td>
+             <td>
+                 <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{video.veto}}<span style=margin-left:10px;" class="glyphicon glyphicon-thumbs-down" ng-click="incrementVeto(video._id)"></span>
+                 <button type="button" class="btn btn-default" ng-click="resetVeto(video._id)">
+                     Reset
+                 </button></span>
+            </td>
+
+            <td>
+               <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>
+                <button type="button" class="btn btn-default" ng-click="delete(video._id)">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                </button>
+                <button type="button" class="btn btn-default" ng-click="editVideo(video._id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+                </span>
+            </td>
+
+    	</tr>
+      </tbody>
+    </table> 
+  </div>

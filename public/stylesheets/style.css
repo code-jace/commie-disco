@@ -1,0 +1,22 @@
+body {
+
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+body {
+  background: rgba(255, 48, 70, 0.55);
+}
+
+.jumbotron {
+  opacity: 0.95;
+  background: rgba(253,217,120,0.55);
+}
+
+Footer {
+
+}
