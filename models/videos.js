@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var VideoSchema = new mongoose.Schema({
    // id: Number,
+    thumbnail: String,
     vidId: String,
     vidName: String,
     user: String,

@@ -17,14 +17,15 @@
         <div class="form-group" align="center">
           <input type="text"
           class="form-control"
-          placeholder="Video Name"
+          placeholder="Search Video Name"
           ng-model="formData.vidName"
           ng-style="{'width': auto}"
           required></input>
         </div>
         <div>
-          <p>A Video Id will be generated from the top result for your entry</p>
+          <p>A Video Id will be generated from the most popular result for your entry.</p>
           <p>By being more specific, you will have a better chance at getting what you want</p>
+          <p>For example "Lets go stuck in the sound" instead of just "Lets go"</p>
         </div>
         <!--<div class="form-group" align="center">
           <input type="text"
@@ -38,7 +39,8 @@
                  class="form-control"
                  placeholder="User"
                  ng-model="formData.user"
-                 ng-style="{'width':auto}"></input>
+                 ng-style="{'width':auto}"
+          required></input>
         </div>
 
         <button type="submit" class="btn btn-primary">ADD VIDEO!</button>

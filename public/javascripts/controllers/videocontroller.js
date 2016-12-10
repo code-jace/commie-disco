@@ -30,16 +30,16 @@ app.controller('videoController', ['$scope', '$location', '$http', 'videoID', fu
     $scope.formData = {};
 
 
-    $scope.id = videoCount +1;
+    //$scope.id = videoCount +1;
     $scope.vidName = '';
     $scope.vidId = '';
-    $scope.user = 'Guest';
+    $scope.user = '';
 
 
     $scope.formData.vidName = '';
     $scope.formData.vidId = '';
-    $scope.formData.user = 'Guest';
-    $scope.formData.id = videoCount +1;
+    $scope.formData.user = '';
+    //$scope.formData.id = videoCount +1;
 
     findAll();
 
@@ -64,17 +64,20 @@ app.controller('videoController', ['$scope', '$location', '$http', 'videoID', fu
     //called in the edits page to post the new information
     $scope.makeEdits = function(){
         //set the formData.id to the stored ID
-        $scope.formData.id = videoID.getvideoID();
+        if (confirm("Are you sure you want to edit this Video?")) {
+            $scope.formData.id = videoID.getvideoID();
 
-        $http.post('/edit', $scope.formData)
-            .success(function(data) {
-            $scope.videos = data;
-            $location.path('/videos');
-            console.log(data);
-        })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
+            $http.post('/edit', $scope.formData)
+                .success(function (data) {
+                    $scope.videos = data;
+                    $location.path('/videos');
+                    console.log(data);
+
+                })
+                .error(function (data) {
+                    console.log('Error: ' + data);
+                });
+        }
 
 
     }

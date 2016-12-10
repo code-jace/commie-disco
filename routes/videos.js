@@ -38,7 +38,8 @@ router.findOne = function(req, res) {
 
 var opts = {
     maxResults: 1,
-    key: 'AIzaSyD8nsJnEoR-AFZR5RhsAphrmmSH8o9Y-Ek'
+    key: 'AIzaSyD8nsJnEoR-AFZR5RhsAphrmmSH8o9Y-Ek',
+    type: 'video'
 };
 
 router.addVideo = function(req, res) {
@@ -53,6 +54,8 @@ router.addVideo = function(req, res) {
         else
         //console.dir(results[0]);
         console.warn(results[0].id);
+        console.warn(results[0].thumbnails.default.url);
+        video.thumbnail = (results[0].thumbnails.default.url);
         video.vidId = (results[0].id);
         video.vidName = req.body.vidName;
         video.user = req.body.user;
@@ -76,15 +79,19 @@ router.addVideo = function(req, res) {
 
 }
 
-//This was added to edit the video
+
 
     router.editVideo = function (req, res) {
 
         Video.findById(req.body.id, function (err, video) {
 
-            video.vidName = req.body.vidName;
-            video.user = req.body.user;
-            video.veto = 0;
+            if(req.body.vidName) {
+                video.vidName = req.body.vidName;
+            }
+            if(req.body.user) {
+                video.user = req.body.user;
+            }
+            //video.veto = 0;
 
             console.log('Editing Video: ' + JSON.stringify(video));
 
